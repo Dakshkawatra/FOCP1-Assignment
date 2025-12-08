@@ -1,0 +1,17 @@
+char* intToRoman(int num) {
+    static char* th[]={"","M","MM","MMM"}; 
+    static char* hun[]={"","C","CC","CCC","CD","D","DC","DCC","DCCC","CM"}; 
+    static char* tens[]={"","X","XX","XXX","XL","L","LX","LXX","LXXX","XC"};  
+    static char*one[]={"","I","II","III","IV","V","VI","VII","VIII","IX"}; 
+       char *final_answer=(char*)calloc(16,sizeof(char)); 
+       final_answer[0]='\0';
+       int t=num/1000; // to get the thousand place
+       int h=(num%1000)/100; // to get the hundred place
+       int te=(num%100)/10;
+       int o=num%10;
+       strcat(final_answer,th[t]);
+       strcat(final_answer,hun[h]);
+       strcat(final_answer,tens[te]);
+       strcat(final_answer,one[o]);  
+       return final_answer;  
+}
