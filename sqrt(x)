@@ -1,0 +1,7 @@
+int mySqrt(int x) {
+    long long i=0; // for bigger range which prevents the overflow the interger
+    while(i*i<=x){
+        i++;
+    }
+    return i-1;
+}
