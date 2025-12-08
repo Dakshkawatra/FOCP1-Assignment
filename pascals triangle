@@ -1,0 +1,24 @@
+
+int** generate(int numRows, int* returnSize, int** returnColumnSizes) {
+    // Allocate memory for the triangle (array of integer pointers)
+    int** result = (int**)calloc(numRows,sizeof(int*));
+    *returnColumnSizes = (int*)calloc(numRows,sizeof(int));
+    *returnSize = numRows;
+
+    for (int i = 0; i < numRows; i++) {
+        // Each row has (i + 1) elements
+        (*returnColumnSizes)[i] = i + 1;
+        result[i] = (int*)malloc((i + 1) * sizeof(int));
+
+        // First and last elements of each row are 1
+        result[i][0] = 1;
+        result[i][i] = 1;
+
+        // Middle elements are sum of two numbers above it
+        for (int j = 1; j < i; j++) {
+            result[i][j] = result[i - 1][j - 1] + result[i - 1][j];
+        }
+    }
+
+    return result;
+}
