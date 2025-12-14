@@ -1,0 +1,15 @@
+/**
+ * Note: The returned array must be malloced, assume caller calls free().
+ */
+bool* prefixesDivBy5(int* nums, int numsSize, int* returnSize) {
+    // nned menory allocation for the numbers in answer 
+    bool *answer= calloc(numsSize,sizeof(bool));
+    int reminder=0;
+    for(int i=0;i<numsSize;i++){
+        reminder=reminder*2+nums[i]; // shifts the element to left position
+        reminder=reminder%5;
+        answer[i]=(reminder==0);
+    }
+    *returnSize = numsSize;
+    return  answer;
+}
